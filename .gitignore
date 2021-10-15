@@ -3,6 +3,12 @@
 # dependencies
 /node_modules
 
+#ignore unwanted servers
+/servers/django
+/servers/flask
+/servers/laravel
+/servers/spark
+
 # testing
 /coverage
 
