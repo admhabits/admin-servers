@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import jsonwebtoken from 'jsonwebtoken';
 import cors from 'cors';
 import Config from './config';
@@ -21,8 +20,8 @@ function doesUserExists(username, password) {
 }
 
 app
-	.use(bodyParser.urlencoded({ extended: true }))
-	.use(bodyParser.json())
+	.use(express.urlencoded({ extended: true }))
+	.use(express.json())
 	.use(cors());
 
 app.get('/', (req, res) => {
@@ -33,7 +32,7 @@ app.post('/api/login', (req, res) => {
 	const { username, password } = req.body;
 	const response = {};
 	// You can use DB checking here
-
+	
 	if (doesUserExists(username, password)) {
 		response.token = jsonwebtoken.sign(
 			{
